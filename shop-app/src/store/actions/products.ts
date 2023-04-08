@@ -1,5 +1,5 @@
 import { ProductAction } from '../types/productsActionTypes';
-import { Cart, Product } from '../types/types';
+import { Product } from '../types/types';
 import * as actionTypes from './actionTypes';
 
 export const init = (isSuccess: boolean, totalPages: number): ProductAction => ({
@@ -22,7 +22,18 @@ export const storeProducts = (products: Product[]) => ({
     products: products
 });
 
-export const addToCart = (cart: Cart) => ({
+export const addToCart = (product: Product, quantity: number, type: string) => ({
     type: actionTypes.ADD_TO_CART,
-    cart: cart
+    product: product,
+    quantity: quantity,
+    variant: type
+});
+
+export const updateCurrentPage = (currentPage: number) => ({
+    type: actionTypes.UPDATE_CURRENT_PAGE,
+    currentPage: currentPage,
+});
+
+export const isModalActive = () => ({
+    type: actionTypes.IS_MODAL_ACTIVE,
 });

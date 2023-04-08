@@ -3,5 +3,7 @@ export {
     isLoading, 
     storeCategory,
     storeProducts,
-    addToCart
+    addToCart,
+    updateCurrentPage,
+    isModalActive
 } from './products';

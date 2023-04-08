@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { Cart, Product } from './types';
+import { CartProducts, Product } from './types';
 
 export interface Init {
     type: typeof actionTypes.INIT;
@@ -23,14 +23,27 @@ export interface StoreProducts {
 
 export interface AddToCart {
     type: typeof actionTypes.ADD_TO_CART;
-    cart: Cart;
+    product: Product;
+    quantity: number;
+    variant: string;
 };
+
+export interface UpdateCurrentPage {
+    type: typeof actionTypes.UPDATE_CURRENT_PAGE;
+    currentPage: number;
+}
+
+export interface IsModalActive {
+    type: typeof actionTypes.IS_MODAL_ACTIVE;
+}
 
 export type ProductsActionTypes = 
     | Init
     | IsLoading
     | StoreCategory
     | StoreProducts
-    | AddToCart;
+    | AddToCart
+    | UpdateCurrentPage
+    | IsModalActive;
 
 export type ProductAction = ProductsActionTypes;

@@ -1,48 +1,65 @@
 import { useState, useEffect } from 'react';
-import { Product } from '../../../store/types/types';
+import { CartProducts, Product } from '../../../store/types/types';
+import './quantity.scss';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../store/actions';
 
 interface Props {
-    product: Product;
+    product: CartProducts | Product;
     onPropsUpdate: (newProps: any) => void;
+    status: boolean;
+    variant?: string;
 }
 
 function Quantity(props: Props) {
-    let [quantity, setQuantity] = useState(0);
+    const dispatch = useDispatch();
+    const [quantity, setQuantity] = useState(0);
     const updatedProps  = {
         ...props,
         quantity: quantity
     };
 
-    const handleIncrement = async() => {
+    const handleIncrement = async(variant: string) => {
         if(quantity < props.product.stock) {
-            await setQuantity(function(prevQ) {
+            await setQuantity(function(prevQ: number) {
                 return (prevQ + 1);
             })
-            
+            if(props.product && 'quantity' in props.product && props.product.quantity < props.product.stock && props.variant) {
+                dispatch(addToCart(props.product, quantity, variant));
+            }
         }
     };
 
-    const handleDecrement = async() => {
+    const handleDecrement = async(variant: string) => {
         if(quantity > 0) {
-            setQuantity(quantity - 1)
+            setQuantity(quantity - 1);
+        };
+
+        if(quantity >= 0 && props.variant) {
+            dispatch(addToCart(props.product, quantity, variant));
         }
     };
     
     useEffect(() => {
-        props.onPropsUpdate(updatedProps)
-    }, [quantity]);
+        props.onPropsUpdate(updatedProps);
+
+        if(props.status) {
+            setQuantity(0);
+        }
+    }, [quantity, props.status]);
 
     return(
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: 25, width: 90, borderRadius: 8}}>
-                <div style={{ backgroundColor: '#fff', width: 25, cursor: 'pointer', borderTopLeftRadius: 8, borderBottomLeftRadius: 8, textAlign: 'center'}} onClick={() => handleDecrement()}>
-                    <span style={{ fontWeight: '800', fontSize: '21px' }}>-</span>
-                </div>
-                <div style={{ backgroundColor: '#fff', width: 40, textAlign: 'center', padding: 2}}>
-                    <span style={{ fontWeight: '800', fontSize: '18px' }}>{quantity}</span>
-                </div>
-                <div style={{ backgroundColor: '#fff', width: 25, cursor: 'pointer',  borderTopRightRadius: 8, borderBottomRightRadius: 8, textAlign: 'center'}} onClick={() => handleIncrement()}>
-                    <span style={{ fontWeight: '800', fontSize: '21px' }}>+</span>
-                </div>
+        <div className='mainQuantity'>
+            <div className='dec' onClick={() => handleDecrement('dec')}>
+                <span className='text'>-</span>
+            </div>
+            <div className='qty'>
+                <span className='qtyText'>{props.product && 'quantity' in props.product ? props.product.quantity : quantity}</span>
+            </div>
+
+            <div className='inc' onClick={() => handleIncrement('inc')}>
+                <span className='text'>+</span>
+            </div>
         </div>
     )
 };

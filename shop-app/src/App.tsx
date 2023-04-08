@@ -1,10 +1,12 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import './App.css';
 import { useGetProductsByCategoryQuery } from './controllers/productController';
 import { useEffect } from 'react';
-import { init, isLoading, storeProducts } from './store/actions';
-import Shop from './components/pages/shop';
+import { init, isLoading } from './store/actions';
+import Shop from './components/pages/shop/shop';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/molecules/header/header';
+import Navigation from './components/molecules/navigationMenu/navigation';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,16 +17,24 @@ function App() {
     if(data) {
       // setting loading to false if we have data, spinner would go away. 
       dispatch(init(isSuccess, data.length));
-      dispatch(storeProducts(data));
     } else if(isError) {
       dispatch(isLoading());
     }
-  }, [isSuccess])
+  }, [isSuccess, activeCategory])
 
   return (
-    <div>
-      <Shop />
-    </div>
+    <>
+    <Header />
+    <Navigation />
+    <Routes>
+      <Route>
+        <Route path='/vegetables' element={<Shop />} />
+        <Route path='/fruits' element={<Shop />} />
+        <Route path='/cheese' element={<Shop />} />
+      </Route>
+    </Routes>
+    </>
+    
   );
 }
 

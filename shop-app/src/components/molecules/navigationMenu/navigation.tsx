@@ -1,13 +1,25 @@
 import React from "react";
-import Icons from "../../atoms/icon/icons";
+import Icons from "../../atoms/icon/icon";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { storeCategory } from "../../../store/actions";
+import './navigationMenu.scss';
 
 
 function Navigation() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const updateActiveCategory = (category: string) => {
+        dispatch(storeCategory(category.toUpperCase()));
+        navigate(`/${category}`, {replace: true});
+    };
+
     return(
-        <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', justifyContent: 'flex-start', width: '15%', backgroundColor: '#fff', height: '86.8vh', float: 'left', marginTop: '84px', padding: 10, borderRight: '1px solid #eee'}}>
-            <Icons iconName="vegetable" text="Vegetables" locationType="nav"/>
-            <Icons iconName="fruits" text="Fruits" locationType="nav" />
-            <Icons iconName="cheese" text="Cheese" locationType="nav" />
+        <div className="mainNavigationMenu">
+            <Icons iconName="vegetable" text="Vegetables" locationType="nav" navigation={updateActiveCategory}/>
+            <Icons iconName="fruits" text="Fruits" locationType="nav" navigation={updateActiveCategory} />
+            <Icons iconName="cheese" text="Cheese" locationType="nav" navigation={updateActiveCategory} />
         </div>
     )   
 };

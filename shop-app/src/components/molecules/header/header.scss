@@ -1,0 +1,21 @@
+.mainHeader {
+    display: flex;
+    flex-direction: row; 
+    position: fixed;
+    width: 100%;
+    background-color: #fff; 
+    padding: 10px;
+    top: 0;
+    border-bottom: 1px solid #eee; 
+    justify-content: space-between;
+    left: 0;
+    z-index: 999;
+};
+
+.userCart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 20px; 
+}

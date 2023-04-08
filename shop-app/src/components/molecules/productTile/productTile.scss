@@ -1,0 +1,56 @@
+.mainProductTile {
+    display: flex; 
+    flex-direction: column;
+    height: 280px; 
+    width: 280px; 
+    border-radius: 18px; 
+    background-color: #FFF3E2;
+    position: relative; 
+    padding: 15px; 
+    margin: 20px; 
+}
+
+.h3 {
+    color: #865DFF; 
+    text-align: center;
+}
+
+.desc {
+    text-align: center;
+    color: #19376D; 
+    font-weight: 500;
+}
+
+.quantityContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 280px;
+    justify-content: space-around;
+    bottom: 70px;
+    position: absolute;
+}
+
+.addToCart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 280px;
+    justify-content: space-around;
+    bottom: 0px;
+    position: absolute;
+
+    .h4 {
+        color: #FFA559;
+    };
+
+    .h4Stock {
+        color: #159895;
+        cursor: pointer;
+    };
+
+    .h4Price {
+        text-align: end;
+    }
+}
+

@@ -1,34 +1,49 @@
 import React, {useState} from 'react';
-import { Product } from '../../../store/types/types';
+import {Product} from '../../../store/types/types';
 import Quantity from '../../atoms/quantity/quantity';
+import {useDispatch, useSelector} from "react-redux";
+import { addToCart } from '../../../store/actions';
+import './productTile.scss'
 
 interface Props {
     product: Product;
 }
 
 function ProductTile(props: Props) {
-    const [productQ, setProductQ] = useState(0)
-    const handlePropsUpdate = (newProps: any) => {
-        console.log('NewProps', newProps);
-        setProductQ(newProps.quantity)
-    }
+    const dispatch = useDispatch();
+    const [productQ, setProductQ] = useState(0);
+    const [status, setStatus] = useState(false);
+    const cart = useSelector((state: any) => state.reducer.ProductReducer.cart);
 
-    const addToCart = () => {
-        console.log('Product', props.product, productQ)
-    }
+    const handlePropsUpdate = (newProps: any) => {
+        setProductQ(newProps.quantity)
+        setStatus(false);
+    };
+
+    const addItemToCart = (itemToAdd: Product) => {
+        dispatch(addToCart(itemToAdd, productQ, ''));
+        setStatus(true);
+    };
+
+    const isStockNotAvailable = cart.length >= 0 && 
+        cart.find((item: Product) => item._id === props.product._id)?.quantity >= props.product.stock;
+
     return(
-        <div style={{ display: 'flex', flexDirection: 'column', top: 100, height: 260, width: 260, borderRadius: 18, backgroundColor: '#FDF4F5', position: 'relative', padding: 15, margin: 20 }}>
-            <h3 style={{ color: '#7149C6', textAlign: 'center'}}>{props.product.title}</h3>
-            <span style={{ textAlign: 'center' }}>{props.product.desc}</span>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '260px', justifyContent: 'space-around', bottom: 70, position: 'absolute'}}>
-                <Quantity product={props.product} onPropsUpdate={handlePropsUpdate}/>
+        <div className='mainProductTile'>
+            <h3 className='h3'>{props.product.title}</h3>
+            <span className='desc'>{props.product.desc}</span>
+            <div className='quantityContainer'>
+                <Quantity product={props.product} onPropsUpdate={handlePropsUpdate} status={status} />
             </div>
-           
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '260px', justifyContent: 'space-around', bottom: 5, position: 'absolute'}}>
-                <h4 style={{ color: '#1A5F7A'}} onClick={() => addToCart()}>Add to Cart</h4>
-                
-                <h4 style={{ textAlign: 'end'}}>€ {props.product.price}</h4>
-            </div> 
+
+            <div className='addToCart'>
+                { isStockNotAvailable ?
+                    <h4 className='h4'>No Stock Available</h4>   
+                    : <h4 className='h4Stock' onClick={() => addItemToCart(props.product)}>Add to Cart</h4>
+                }
+
+                <h4 className='h4Price'>€ {props.product.price}</h4>
+            </div>
         </div>
     )
 }

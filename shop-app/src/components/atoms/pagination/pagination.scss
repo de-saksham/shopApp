@@ -1,0 +1,17 @@
+.mainPagination {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    width: 83%;
+    right: 0;
+    background-color: red;
+    bottom: 0;
+    border-bottom: 1px solid #eee; 
+    justify-content: space-between; 
+    overflow: hidden;
+
+    .arrows {
+        margin: 20px; 
+        cursor: pointer;
+    }
+}
