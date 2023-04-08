@@ -15,7 +15,9 @@ function Shop() {
     const activeCategory = useSelector((state: any) => state.reducer.ProductReducer.activeCategory);
     const isLoading = useSelector((state: any) => state.reducer.ProductReducer.isLoading);
     const isModalActive = useSelector((state: any) => state.reducer.ProductReducer.isModalActive);
-    const {data, isSuccess} = useGetProductsByCategoryQuery({category: activeCategory});
+    const {data, isSuccess } = useGetProductsByCategoryQuery(
+        {category: activeCategory}
+    );
     const [lastItem, setLastItem] = useState('');
     const dispatch = useDispatch();
 
@@ -53,6 +55,7 @@ function Shop() {
                     <div className='productShowcase'>
                         {productShowcase()}
                     </div>
+                    
                 }
 
                 { lastItem && !isModalActive &&
@@ -61,12 +64,10 @@ function Shop() {
                     </div> 
                 }
 
-                <Pagination />
+                
             </div>
-
-            {isModalActive && <Cart />}
-
-            
+            <Pagination />    
+            {isModalActive && <Cart />} 
         </div>
     )
 };

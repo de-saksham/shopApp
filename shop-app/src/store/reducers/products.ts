@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from "../../utils/utility";
-import { State, initApp, storeCategory, storeProducts, addToCart, currentPage } from '../types/types';
+import { State, initApp, storeCategory, storeProducts, addToCart, currentPage, orderStatus } from '../types/types';
 
 const initialState: State = {
     isLoading: true,
@@ -11,7 +11,8 @@ const initialState: State = {
     products: [],
     isCartEmpty: true,
     isModalActive: false,
-    cart: [],   
+    cart: [],
+    orderStatus: false,   
 };
 
 const init = (state: State, action: initApp) => {
@@ -30,7 +31,8 @@ const isLoading = (state: State) => {
 
 const updateCategory = (state: State, action: storeCategory) => {
     return updateObject(state, {
-        activeCategory: action.category
+        activeCategory: action.category,
+        orderStatus: false,
     })
 };
 
@@ -42,13 +44,13 @@ const updateProducts = (state: State, action: storeProducts) => {
 
 const updateCart = (state: State, action: addToCart) => {
     const { cart } = state;
-        const { product, quantity, variant } = action;
+    const { product, quantity, variant } = action;
 
-        // Check if the product already exists in the cart
-        const existingProductIndex = cart.findIndex((item) => item._id === product._id);
+    // Check if the product already exists in the cart
+    const existingProductIndex = cart.findIndex((item) => item._id === product._id);
 
-        if (existingProductIndex !== -1) {
-        // If the product already exists, update its quantity
+    if (existingProductIndex !== -1) {
+     // If the product already exists, update its quantity
         const updatedCart = cart.map((item, index) => {
             if (index === existingProductIndex) {
                 console.log('var', variant);
@@ -76,19 +78,33 @@ const updateCart = (state: State, action: addToCart) => {
             ...state,
             cart: [...cart, { ...product, quantity }],
             }
-        }
+    }
 };
 
 const updateCurrentPage = (state: State, action: currentPage) => {
     return updateObject(state, {
-        currentPage: action.currentPage
+        currentPage: action.currentPage,
     });
 };
 
 const isModalActive = (state: State) => {
     return updateObject(state, {
-        isModalActive: !state.isModalActive
+        isModalActive: !state.isModalActive,
+        orderStatus: false,
     });
+};
+
+const statusOrder = (state: State, action: orderStatus) => {
+    if(action.orderStatus) {
+        return updateObject(state, {
+            orderStatus: true,
+            cart: []
+        });
+    } else {
+        return updateObject(state, {
+            orderStatus: false
+        });
+    }
 }
 
 const reducer = (state: State = initialState, action: any) => {
@@ -106,7 +122,9 @@ const reducer = (state: State = initialState, action: any) => {
         case actionTypes.UPDATE_CURRENT_PAGE:
             return updateCurrentPage(state, action);
         case actionTypes.IS_MODAL_ACTIVE:
-            return isModalActive(state);        
+            return isModalActive(state);
+        case actionTypes.ORDER_STATUS:
+            return statusOrder(state, action);                
         default: return state;
     }
 };

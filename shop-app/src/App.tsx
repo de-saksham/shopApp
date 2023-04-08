@@ -4,9 +4,10 @@ import { useGetProductsByCategoryQuery } from './controllers/productController';
 import { useEffect } from 'react';
 import { init, isLoading } from './store/actions';
 import Shop from './components/pages/shop/shop';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/molecules/header/header';
 import Navigation from './components/molecules/navigationMenu/navigation';
+import Pagination from './components/atoms/pagination/pagination';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,11 +28,10 @@ function App() {
     <Header />
     <Navigation />
     <Routes>
-      <Route>
-        <Route path='/vegetables' element={<Shop />} />
-        <Route path='/fruits' element={<Shop />} />
-        <Route path='/cheese' element={<Shop />} />
-      </Route>
+      <Route path="/" element={<Navigate to="/vegetables" />} />
+      <Route path='/vegetables' element={<Shop />} />
+      <Route path='/fruits' element={<Shop />} />
+      <Route path='/cheese' element={<Shop />} />
     </Routes>
     </>
     

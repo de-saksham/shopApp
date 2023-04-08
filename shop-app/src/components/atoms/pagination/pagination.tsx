@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCurrentPage } from '../../../store/actions';
 import './pagination.scss';
+import Icons from '../icon/icon';
 
 function Pagination() {
     const products = useSelector((state: any) => state.reducer.ProductReducer.products);
@@ -19,10 +20,10 @@ function Pagination() {
     return(
         <div className='mainPagination'>
             <div onClick={() => currentPage === 1 ? null : prevPage()} className='arrows'>
-                <span>left</span>
+                <Icons text='' iconName='back' locationType='nav'/>
             </div>
             <div onClick={() => products.length === currentPage ? null : nextPage()} className='arrows'>
-                <span>right</span>
+                <Icons text='' iconName='next' locationType='nav'/>
             </div>
         </div>
     )

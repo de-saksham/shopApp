@@ -1,3 +1,4 @@
+import { TypeOfExpression } from 'typescript';
 import * as actionTypes from '../actions/actionTypes';
 import { CartProducts, Product } from './types';
 
@@ -37,6 +38,11 @@ export interface IsModalActive {
     type: typeof actionTypes.IS_MODAL_ACTIVE;
 }
 
+export interface OrderStatus {
+    type: typeof actionTypes.ORDER_STATUS;
+    orderStatus: boolean;
+}
+
 export type ProductsActionTypes = 
     | Init
     | IsLoading
@@ -44,6 +50,7 @@ export type ProductsActionTypes =
     | StoreProducts
     | AddToCart
     | UpdateCurrentPage
-    | IsModalActive;
+    | IsModalActive
+    | OrderStatus;
 
 export type ProductAction = ProductsActionTypes;

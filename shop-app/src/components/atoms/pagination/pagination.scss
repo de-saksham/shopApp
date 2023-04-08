@@ -1,17 +1,15 @@
 .mainPagination {
     display: flex;
     flex-direction: row;
-    position: fixed;
-    width: 83%;
     right: 0;
-    background-color: red;
     bottom: 0;
-    border-bottom: 1px solid #eee; 
-    justify-content: space-between; 
+    left: 0;
+    justify-content: center; 
     overflow: hidden;
+    margin-top: 50px;
+    position: fixed;
 
     .arrows {
-        margin: 20px; 
         cursor: pointer;
     }
 }

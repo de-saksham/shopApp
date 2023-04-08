@@ -14,6 +14,10 @@ export const productApi = createApi({
                 url: '/v1/itemById',
                 method: 'POST',
                 body: JSON.stringify(id),
+                // Add the event name to the meta object of the query
+                meta: {
+                    invalidateOn: 'itemsUpdated',
+                },
             }),
         }),
         getProductsByCategory: builder.query({

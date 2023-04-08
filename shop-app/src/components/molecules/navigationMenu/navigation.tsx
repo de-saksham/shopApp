@@ -2,7 +2,7 @@ import React from "react";
 import Icons from "../../atoms/icon/icon";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { storeCategory } from "../../../store/actions";
+import { storeCategory, updateCurrentPage } from "../../../store/actions";
 import './navigationMenu.scss';
 
 
@@ -12,6 +12,7 @@ function Navigation() {
 
     const updateActiveCategory = (category: string) => {
         dispatch(storeCategory(category.toUpperCase()));
+        dispatch(updateCurrentPage(1));
         navigate(`/${category}`, {replace: true});
     };
 

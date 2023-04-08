@@ -32,6 +32,7 @@ export interface State {
     isCartEmpty: boolean;
     isModalActive: boolean;
     cart: CartProducts[];
+    orderStatus: boolean;
 }
 
 export interface initApp {
@@ -55,4 +56,20 @@ export interface addToCart {
 
 export interface currentPage {
     currentPage: number;
+}
+
+export interface orderProducts {
+    quantity: number;
+    itemId: string;
+}
+
+export interface order {
+    order: {
+        userId: number,
+        items: orderProducts[];
+    }
+}
+
+export interface orderStatus {
+    orderStatus: boolean;
 }

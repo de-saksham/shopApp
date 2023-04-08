@@ -1,3 +1,4 @@
+import { BlobOptions } from 'buffer';
 import { ProductAction } from '../types/productsActionTypes';
 import { Product } from '../types/types';
 import * as actionTypes from './actionTypes';
@@ -36,4 +37,9 @@ export const updateCurrentPage = (currentPage: number) => ({
 
 export const isModalActive = () => ({
     type: actionTypes.IS_MODAL_ACTIVE,
+});
+
+export const orderStatus = (orderStatus: boolean) => ({
+    type: actionTypes.ORDER_STATUS,
+    orderStatus: orderStatus,
 });

@@ -5,5 +5,6 @@ export {
     storeProducts,
     addToCart,
     updateCurrentPage,
-    isModalActive
+    isModalActive,
+    orderStatus
 } from './products';

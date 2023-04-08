@@ -9,12 +9,12 @@ import bodyParser from 'body-parser';
 import itemsRoute from './routes/items.js';
 import ordersRoute from './routes/orders.js';
 import resolvers from './resolvers/index.js';
-import { itemsTypeDefs } from './resolvers/items.js';
-import { orderTypeDefs } from './resolvers/orders.js';
 import schema from './schema/schema.js';
 // Create a new Apollo Server and attach it to an Express app
 const app = express();
 const httpServer = http.createServer(app);
+
+app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

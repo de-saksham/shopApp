@@ -4,6 +4,7 @@ import Quantity from '../../atoms/quantity/quantity';
 import {useDispatch, useSelector} from "react-redux";
 import { addToCart } from '../../../store/actions';
 import './productTile.scss'
+import Icons from '../../atoms/icon/icon';
 
 interface Props {
     product: Product;
@@ -26,14 +27,18 @@ function ProductTile(props: Props) {
     };
 
     const isStockNotAvailable = cart.length >= 0 && 
-        cart.find((item: Product) => item._id === props.product._id)?.quantity >= props.product.stock;
+        cart.find((item: Product) => item._id === props.product._id)?.quantity >= props.product.stock || !props.product.stock;
 
     return(
         <div className='mainProductTile'>
             <h3 className='h3'>{props.product.title}</h3>
             <span className='desc'>{props.product.desc}</span>
+            <span className='stock'>Stock: {props.product.stock}</span>
             <div className='quantityContainer'>
-                <Quantity product={props.product} onPropsUpdate={handlePropsUpdate} status={status} />
+                {!isStockNotAvailable ?
+                    <Quantity product={props.product} onPropsUpdate={handlePropsUpdate} status={status} /> :
+                    <Icons text='' iconName='out-of-stock' locationType='header' />
+                }
             </div>
 
             <div className='addToCart'>

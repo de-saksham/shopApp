@@ -20,7 +20,7 @@ router.post('/addOrder', async (req, res) => {
       await resolvers.Mutation.addOrder(null, { order });
       res.status(200).json({ success: true });
   } catch(error) {
-      res.status(500).json({ success: false })
+      res.status(500).json({ success: false, error: error })
   }
 });
 
