@@ -1,0 +1,44 @@
+.mainQuantity {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; 
+    height: 25px;
+    width: 90px; 
+    border-radius: 8px;
+    
+    .dec {
+        background-color: #fff;
+        width: 25px; 
+        cursor: pointer; 
+        border-top-left-radius: 8px; 
+        border-bottom-left-radius: 8px; 
+        text-align: center; 
+    }
+
+    .inc {
+        background-color: #fff;
+        width: 25px; 
+        cursor: pointer; 
+        border-top-right-radius: 8px; 
+        border-bottom-right-radius: 8px; 
+        text-align: center; 
+    }
+
+    .qty {
+        background-color: #fff; 
+        width: 40px; 
+        text-align: center; 
+        padding: 2px; 
+    }
+
+    .text {
+        font-weight: 800; 
+        font-size: 21px; 
+    }
+
+    .qtyText {
+        font-weight: 800; 
+        font-size: 18px; 
+    }
+}

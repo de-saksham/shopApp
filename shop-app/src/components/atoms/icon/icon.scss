@@ -1,0 +1,45 @@
+.mainIcon {
+    cursor: pointer;
+};
+
+.iconContainer {
+    display: flex; 
+    flex-direction: row;
+    caret-color: transparent; 
+    align-items: center;
+    cursor: pointer;
+    
+    .iconDiv {
+        display: flex;
+        flex-direction: row; 
+        align-items: flex-start;
+    }
+
+    .iconHeader {
+        height: 40px; 
+        width: 40px; 
+        margin-left: 20px;
+    };
+
+    .iconNav {
+        height: 30px;
+        width: 30px; 
+        margin-left: 20px;
+    }
+
+    .h4 {
+        color: #865DFF; 
+        margin-left: 20px;
+    }
+
+    .activeCategory {
+        color: #865DFF; 
+        margin-left: 20px; 
+        text-decoration: underline; 
+    };
+
+    .inactiveCategory {
+        color: #000; 
+        margin-left: 20px;
+    }
+}

@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { useGetProductsByCategoryQuery } from './controllers/productController';
+import { useEffect } from 'react';
+import { init, isLoading } from './store/actions';
+import Shop from './components/pages/shop/shop';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Header from './components/molecules/header/header';
+import Navigation from './components/molecules/navigationMenu/navigation';
+import Pagination from './components/atoms/pagination/pagination';
 
 function App() {
+  const dispatch = useDispatch();
+  const activeCategory = useSelector((state: any) => state.reducer.ProductReducer.activeCategory);
+  const {data, isSuccess, isError} = useGetProductsByCategoryQuery({category: activeCategory});
+
+  useEffect(() => {
+    if(data) {
+      // setting loading to false if we have data, spinner would go away. 
+      dispatch(init(isSuccess, data.length));
+    } else if(isError) {
+      dispatch(isLoading());
+    }
+  }, [isSuccess, activeCategory])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header />
+    <Navigation />
+    <Routes>
+      <Route path="/" element={<Navigate to="/vegetables" />} />
+      <Route path='/vegetables' element={<Shop />} />
+      <Route path='/fruits' element={<Shop />} />
+      <Route path='/cheese' element={<Shop />} />
+    </Routes>
+    </>
+    
   );
 }
 

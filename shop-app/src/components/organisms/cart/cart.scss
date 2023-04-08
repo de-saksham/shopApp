@@ -1,0 +1,62 @@
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.mainCart {
+    position: fixed;
+    right: 0 !important;
+    left: 0 !important;
+    bottom: 0;
+    margin: 0 auto;
+    top: 15%;
+    height: 500px;
+    min-height: 200px;
+    width: 600px;
+    min-width: 200px;
+    background-color: #EAEAEA;
+    border: 1px solid #EAEAEA;
+    border-radius: 12px;
+    overflow: scroll;
+}
+
+.cartFooter {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-around; 
+    width: 600px;
+}
+
+.total {
+    font-size: 18px; 
+    font-weight: 600;
+}
+
+.price {
+    font-size: 18px; 
+    font-weight: 700;
+    color: #865DFF;
+}
+
+.buyNow {
+    display: flex; 
+    background-color: #865DFF;
+    border-radius: 18px; 
+    width: 150px; 
+    align-items: center; 
+    justify-content: center; 
+    color: #fff;
+}
+
+.success {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 600px;
+
+    .message {
+        font-size: 22px; 
+        font-weight: 800; 
+        margin-top: 20px;
+    }
+}

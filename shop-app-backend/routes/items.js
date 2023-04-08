@@ -29,7 +29,7 @@ router.post('/productsByCategory', async (req, res) => {
 
     try {
         const data = await resolvers.Query.itemsByCategory(null, category);
-        res.status(200).json({ success: true, data: data });
+        res.status(200).json(data);
     } catch(error) {
         res.status(500).json({ success: false })
     }

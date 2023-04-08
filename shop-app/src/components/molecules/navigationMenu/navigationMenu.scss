@@ -1,0 +1,16 @@
+.mainNavigationMenu {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: flex-start;
+    width: 15%;
+    background-color: #fff;
+    height: calc(100vh - 60px);
+    padding: 10;
+    border-right: 1px solid #eee; 
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 80px;
+    margin-left: 12px;
+}
