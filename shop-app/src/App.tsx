@@ -6,8 +6,7 @@ import { init, isLoading } from './store/actions';
 import Shop from './components/pages/shop/shop';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/molecules/header/header';
-import Navigation from './components/molecules/navigationMenu/navigation';
-import Pagination from './components/atoms/pagination/pagination';
+import NavigationMenu from './components/molecules/navigationMenu/navigationMenu';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +25,7 @@ function App() {
   return (
     <>
     <Header />
-    <Navigation />
+    <NavigationMenu />
     <Routes>
       <Route path="/" element={<Navigate to="/vegetables" />} />
       <Route path='/vegetables' element={<Shop />} />

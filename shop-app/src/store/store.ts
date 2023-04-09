@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from 'redux'
 import { productApi } from "../controllers/productController";
 import { orderApi } from "../controllers/orderController";
-import ProductReducer from './reducers/products';
+import ProductReducer, { initialState } from './reducers/products';
 
 const reducer = combineReducers({
     ProductReducer,

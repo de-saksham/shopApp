@@ -49,7 +49,7 @@ function Quantity(props: Props) {
     }, [quantity, props.status]);
 
     return(
-        <div className='mainQuantity'>
+        <div className='mainQuantity' data-testid='mainQuantity'>
             <div className='dec' onClick={() => handleDecrement('dec')}>
                 <span className='text'>-</span>
             </div>

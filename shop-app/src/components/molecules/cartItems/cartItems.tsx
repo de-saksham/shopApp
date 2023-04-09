@@ -19,7 +19,7 @@ function CartItems() {
         return(
             cart?.map((item: CartProducts) => {
                 return(
-                    <div className='mainCartItem'>
+                    <div className='mainCartItem' key={item._id}>
                         <div className="titleQty">
                             <span className="title">{item.title}</span>
                             <span className="quantity">Quantity: {item.quantity}</span>

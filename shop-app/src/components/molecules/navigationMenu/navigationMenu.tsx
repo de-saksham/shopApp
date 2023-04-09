@@ -6,7 +6,7 @@ import { storeCategory, updateCurrentPage } from "../../../store/actions";
 import './navigationMenu.scss';
 
 
-function Navigation() {
+function NavigationMenu() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ function Navigation() {
     };
 
     return(
-        <div className="mainNavigationMenu">
+        <div className="mainNavigationMenu" data-testid='mainNavigationMenu'>
             <Icons iconName="vegetable" text="Vegetables" locationType="nav" navigation={updateActiveCategory}/>
             <Icons iconName="fruits" text="Fruits" locationType="nav" navigation={updateActiveCategory} />
             <Icons iconName="cheese" text="Cheese" locationType="nav" navigation={updateActiveCategory} />
@@ -25,4 +25,4 @@ function Navigation() {
     )   
 };
 
-export default Navigation;
+export default NavigationMenu;
