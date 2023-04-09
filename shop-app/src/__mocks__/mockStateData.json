@@ -47,6 +47,35 @@
                     "quantity": 11
                 }
             ]
+        },
+        "productApi": {
+            "data": [
+                {
+                    "_id": "642899de1d0bfcc11aa6778a",
+                    "title": "Washington Apple",
+                    "desc": "Juicy red apples straight from United States of America",
+                    "price": 7.99,
+                    "stock": 2,
+                    "category": "FRUITS"
+                },
+                {
+                    "_id": "642899de1d0bfcc11aa6778b",
+                    "title": "Green Apple",
+                    "desc": "The Granny Smith, also known as a green apple or sour apple",
+                    "price": 19.99,
+                    "stock": 124,
+                    "category": "FRUITS"
+                }
+            ]
+        },
+        "orderApi": {
+            "data": {
+                "order": [{
+                    "itemId": "642899de1d0bfcc11aa6778b",
+                    "quantity": 2
+                }],
+                "userId": 1
+            }
         }
     }
 }

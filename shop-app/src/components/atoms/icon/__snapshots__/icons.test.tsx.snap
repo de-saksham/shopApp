@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icons - Test Suite Snapshot 1`] = `
+<Context.Provider
+  value={
+    Object {
+      "getServerState": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "subscription": Object {
+        "addNestedSub": [Function],
+        "getListeners": [Function],
+        "handleChangeWrapper": [Function],
+        "isSubscribed": [Function],
+        "notifyNestedSubs": [Function],
+        "trySubscribe": [Function],
+        "tryUnsubscribe": [Function],
+      },
+    }
+  }
+>
+  <Icons
+    iconName="back"
+    locationType="header"
+    text=""
+  />
+</Context.Provider>
+`;

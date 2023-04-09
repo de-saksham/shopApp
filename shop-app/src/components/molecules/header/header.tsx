@@ -11,7 +11,7 @@ function Header() {
     };
 
     return(
-        <div className='mainHeader'>
+        <div className='mainHeader' data-testid="header-container">
             <Icons iconName="store" locationType="header" text="FreshFoodCo" />
 
             <div className='userCart'>

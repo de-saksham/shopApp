@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from "../../utils/utility";
 import { State, initApp, storeCategory, storeProducts, addToCart, currentPage, orderStatus } from '../types/types';
 
-const initialState: State = {
+export const initialState: State = {
     isLoading: true,
     isSuccess: false,
     totalPages: 0,
