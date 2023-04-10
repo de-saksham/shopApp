@@ -5,10 +5,11 @@ import CartItems from './cartItems';
 import configureStore from 'redux-mock-store';
 import mockStateData from '../../../__mocks__/mockStateData.json';
 import { Provider } from 'react-redux';
+import { TestState } from '../../../store/types/types';
 
 const mockState = mockStateData;
 const mockStore = configureStore([]);
-const store = mockStore(mockState);
+const store: TestState | any = mockStore(mockState);
 
 const inCartItems = store.getState().reducer.ProductReducer.cart;
 
@@ -26,14 +27,14 @@ describe('CartItems component', () => {
     if(!inCartItems) {
         expect(screen.getByText('Your cart is Empty!')).toBeInTheDocument();
     } else {
-        inCartItems.map((item) => {
+        inCartItems.map((item: any) => {
             expect(screen.getByText(item.title)).toBeInTheDocument();
         });
     }
   });
 
   it('renders all items in cart', () => {
-    inCartItems.map((item) => {
+    inCartItems.map((item: any) => {
         expect(screen.getByText(item.title)).toBeInTheDocument();
         expect(screen.getByText(item.quantity)).toBeInTheDocument();
     });

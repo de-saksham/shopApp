@@ -43,8 +43,10 @@ function ProductTile(props: Props) {
 
             <div className='addToCart'>
                 { isStockNotAvailable ?
-                    <h4 className='h4'>No Stock Available</h4>   
-                    : <h4 className='h4Stock' onClick={() => addItemToCart(props.product)}>Add to Cart</h4>
+                    <h4 className='h4'>No Stock Available</h4> :
+                    productQ > 0 ?  
+                    <h4 className='h4Stock' onClick={() => addItemToCart(props.product)}>Add to Cart</h4> :
+                    <h4 className='h4Stock'>Add to Cart</h4>
                 }
 
                 <h4 className='h4Price'>€ {props.product.price}</h4>

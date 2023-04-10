@@ -4,10 +4,11 @@ import Pagination from './pagination';
 import configureStore from 'redux-mock-store';
 import mockStateData from '../../../__mocks__/mockStateData.json';
 import { Provider } from 'react-redux';
+import { TestState } from '../../../store/types/types';
 
 const mockState = mockStateData;
 const mockStore = configureStore([]);
-const store = mockStore(mockState);
+const store: TestState | any = mockStore(mockState);
 
 describe('Pagination component', () => {
     beforeEach(() => {

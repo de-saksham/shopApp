@@ -13,7 +13,7 @@ interface Props {
 }
 
 const icon = (iconName: string) => {
-    return require(`../../../assets/icons/${iconName}.png`)
+    return require(`../../../assets/icons/${iconName}.png`).default
 }
 
 function Icons(props: Props) {

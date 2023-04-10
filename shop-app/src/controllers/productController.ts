@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-require('dotenv').config();
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 // test env
-const apiEndpoint = `${process.env.NODE_SERVER}:3000`;
+const apiEndpoint = `${process.env.REACT_APP_NODE_SERVER}:3000`;
 // // local env
 // const apiEndpoint = 'http://localhost:3000';
 

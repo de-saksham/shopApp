@@ -73,3 +73,22 @@ export interface order {
 export interface orderStatus {
     orderStatus: boolean;
 }
+
+export interface TestState {
+    getState() : {
+      reducer: {
+        ProductReducer: {
+          isLoading: boolean,
+          isSuccess: boolean,
+          totalPages: number,
+          currentPage: number,
+          activeCategory: Category,
+          isCartEmpty: boolean,
+          isModalActive: boolean,
+          orderStatus: boolean,
+          products: Product[],
+          cart: CartProducts[]
+        }
+      }
+    }
+  }
