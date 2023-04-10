@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { order } from "../store/types/types";
 
 // test env
-const apiEndpoint = 'http://13.48.3.137:3000';
+const apiEndpoint = 'http://13.50.109.213:3000';
 // // local env
 // const apiEndpoint = 'http://localhost:3000';
 const headers = {
