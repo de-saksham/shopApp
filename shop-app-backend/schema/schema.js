@@ -18,6 +18,7 @@ const schema = graphql.buildSchema(`
   }
 
   input ItemInput {
+    _id: String!
     title: String!
     desc: String!
     price: Float!
